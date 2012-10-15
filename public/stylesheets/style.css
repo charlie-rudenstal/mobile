@@ -1,0 +1,30 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-color: #444;
+	min-height: 480px;
+	overflow-x: hidden;
+	overflow: hidden;
+ 	font: 14px "Lucida Grande", Arial, Helvetica, sans-serif;
+
+}
+.nav {
+	background-color: #333;
+	color: white;
+	width: 0px;
+	overflow: hidden;
+	height: 305px;
+	float: left;
+}
+
+.nav.is-open {
+	width: 100px;
+	padding: 6px;
+}
+
+.main {
+
+}
