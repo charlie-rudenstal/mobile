@@ -58,10 +58,13 @@
 				var endPoint = {x: e.clientX, y: e.clientY };
 				if(endPoint.x < startPoint.x) {
 					$(me).trigger('swipeleft');
+				} else if(endPoint.x > startPoint.x) {
+					$(me).trigger('swiperight');
 				}
 				state = new defaultState();
 			}			
 		}
+
 	}
 
 })(jQuery);

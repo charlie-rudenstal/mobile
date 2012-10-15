@@ -1,11 +1,16 @@
 (function($) {
 
 	var gestures = new CR.Gestures();
-	$(gestures).on('swipeleft', function(e) {
-		
-		$('.nav').addClass('is-open');
+	$(gestures).on('swipeleft', onSwipeLeft);
+	$(gestures).on('swiperight', onSwipeRight);
 
-	});
+	function onSwipeLeft() {
+		$('body').removeClass('is-nav-open');
+	}
+
+	function onSwipeRight() {
+		$('body').addClass('is-nav-open');
+	}
 
 })(jQuery);
 

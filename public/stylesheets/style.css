@@ -4,27 +4,42 @@
 }
 
 body {
-	background-color: #444;
+	background-color: #bbb;
 	min-height: 480px;
 	overflow-x: hidden;
 	overflow: hidden;
  	font: 14px "Lucida Grande", Arial, Helvetica, sans-serif;
 
 }
+
+.main {
+	-webkit-transition: 0.3s;	
+}
+
 .nav {
 	background-color: #333;
 	color: white;
 	width: 0px;
 	overflow: hidden;
 	height: 305px;
-	float: left;
-}
-
-.nav.is-open {
-	width: 100px;
 	padding: 6px;
+	width: 100px;
+	position: absolute;
+
+	box-sizing: border-box;
+
+	-webkit-transform: translate3d(-100px, 0px, 0px);
+
+	-webkit-transition: 0.3s;
 }
 
-.main {
-
+.is-nav-open .nav {
+	-webkit-transform: translate3d(0px, 0px, 0px);
+	-webkit-transition: 0.3s;
 }
+
+.is-nav-open .main {
+	-webkit-transform: translate3d(100px, 0px, 0px);
+	-webkit-transition: 0.3s;	
+}
+
