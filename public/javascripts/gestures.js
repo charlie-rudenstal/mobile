@@ -30,7 +30,7 @@
 
 			if(state.hasOwnProperty(e.type)) {
 				// Trigger the specific event for touch
-				state[e.type](eventArgs);
+				state[e.type](e, eventArgs);
 			}	
 		 
 			// Trigger the general event to handle both mousedown and touch
@@ -42,24 +42,52 @@
 			}
 
 			if(state.hasOwnProperty(generalEvent)) {
-				state[generalEvent](eventArgs); 
+				state[generalEvent](e, eventArgs); 
 			}	
 		}
 
 		function defaultState() {
-			this.down = function(e) {
-				var startPoint = {x: e.clientX, y: e.clientY };
+			this.down = function(e, args) {
+				var startPoint = {x: args.clientX, y: args.clientY };
 				state = new gestureState(startPoint);
+				// e.preventDefault();
 			}
 		}
 
 		function gestureState(startPoint) {
-			this.up = function(e) {
-				var endPoint = {x: e.clientX, y: e.clientY };
-				if(endPoint.x < startPoint.x) {
-					$(me).trigger('swipeleft');
-				} else if(endPoint.x > startPoint.x) {
-					$(me).trigger('swiperight');
+			this.move = function(e, args) {
+				var endPoint = {x: args.clientX, y: args.clientY };
+				var args = {};
+				args.deltaX = endPoint.x - startPoint.x;
+				args.deltaY = endPoint.y - startPoint.y;
+				args.distanceX = Math.abs(args.deltaX);
+				args.distanceY = Math.abs(args.deltaY);
+				
+
+				$(me).trigger('swiping', args);
+
+				// if(args.distanceY == 0) {
+				// 	e.preventDefault();
+				// }
+			}
+
+			this.up = function(e, args) {
+				var endPoint = {x: args.clientX, y: args.clientY };
+				var args = {};
+				args.deltaX = endPoint.x - startPoint.x;
+				args.deltaY = endPoint.y - startPoint.y;
+				args.distanceX = Math.abs(args.deltaX);
+				args.distanceY = Math.abs(args.deltaY);
+			
+				// No vertical moment
+				// And enough of horizontal moment, triggers swipeLeft and swipeRight 
+				if(args.distanceY < 30) {
+					if(args.deltaX < 0) {
+						$(me).trigger('swipeleft');
+					} else if(args.deltaX > 0) {
+						$(me).trigger('swiperight');
+					}
+					// e.preventDefault();
 				}
 				state = new defaultState();
 			}			

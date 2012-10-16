@@ -4,7 +4,8 @@ html
 		title= title
 		<meta name='apple-mobile-web-app-capable' content='yes' />
 		<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'>
-		<meta name='viewport' content='width=device-width, initial-scale = 1, user-scalable = no'>
+		//- <meta name='viewport' content='width=device-width, initial-scale = 1, user-scalable = no'>
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 		
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		
@@ -14,12 +15,19 @@ html
 		script(src='/javascripts/live.js')
 	
 	body
-		.nav Meny
+		.nav
+			ul
+				li 
+					input(placeholder='Search', type='text', class='search')
+				li News feed
+				li Nearby
+				li Messages
+
 		.main Innehåll
 
 	script
 		window.addEventListener('load', function() {
 			setTimeout(function(){
-				window.scrollTo(0, 1);
+				window.scrollTo(1, 1);
 			}, 0);
 		});
