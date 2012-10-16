@@ -1,5 +1,12 @@
 (function($) {
 
+	// Sliding headeres
+	// http://jqueryfordesigners.com/iphone-like-sliding-headers/
+
+
+
+
+
 	var gestures = new CR.Gestures();
 	$(gestures).on('swipeleft swiperight swiping', handle);
 
@@ -17,7 +24,7 @@
 		this.swiping = function(args) {
 			if(args.deltaX < 0) args.deltaX = 0;
 			if(args.deltaX > menuWidth) args.deltaX = menuWidth;
-			
+
 			var navPos = -menuWidth + args.deltaX;
 			var mainPos = 0 + args.deltaX;
 			
