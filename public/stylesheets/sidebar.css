@@ -70,6 +70,7 @@
 
 .nav-item.active, .nav-item:active {
     background-color: #272D3A;
+    border-color: #272D3A;
 }
 
 
