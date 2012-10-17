@@ -6,7 +6,7 @@
 
 		var sidebar = new CR.Sidebar({ nav: '.nav', main: '.main' });
 
-        $("#iconSidebar").on('click', function() {
+        $("#btnSidebar").on('click', function() {
             sidebar.toggle();
         })
 

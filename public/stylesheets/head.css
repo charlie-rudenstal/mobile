@@ -7,8 +7,6 @@
 
     box-sizing: border-box;
 
-    height: 54px;
-
     background: -webkit-gradient(linear, left top, left bottom,
                  color-stop(0%,#43495B), 
                  color-stop(100%, #262B3B));
@@ -18,8 +16,11 @@
                  color-stop(100%, #161B2B));
 }
 
+.head, .head ul {
+    height: 42px;
+}
+
 .head ul {
-    height: 54px;
     display: table-cell;
     vertical-align: middle;
 }
@@ -31,5 +32,5 @@
 
 .head .head-title {
     font-family: arial, helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
 }
