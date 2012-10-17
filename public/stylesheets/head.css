@@ -1,7 +1,6 @@
 .head {
     font-weight: normal;
     color: white;
-    width: 100%;
     display: block;
     border-bottom: 1px solid #272D3A;
 
@@ -16,6 +15,7 @@
     background: -webkit-gradient(linear, left top, left bottom,
                  color-stop(0%,#33394B), 
                  color-stop(100%, #161B2B));
+    white-space: nowrap;
 }
 
 .head ul {
@@ -27,9 +27,11 @@
 .head .head-item {
     padding: 0px 8px;
     display: inline;
+    white-space: nowrap;
 }
 
 .head .head-title {
     font-family: arial, helvetica, sans-serif;
     font-size: 14px;
+    white-space: nowrap;
 }

@@ -30,17 +30,19 @@
 
         me.open = function() {
             nav.css('-webkit-transition', '0.15s');
-            nav.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
+            nav.css('width', width);
             main.css('-webkit-transition', '0.15s');
-            main.css('-webkit-transform', 'translate3d(' + width + 'px, 0px, 0px)');
+            // main.css('-webkit-transform', 'translate3d(' + width + 'px, 0px, 0px)');
+            main.css('margin-left', '255px');
             state = new navOpenState();
         }
 
         me.close = function() {
             nav.css('-webkit-transition', '0.15s');
-            nav.css('-webkit-transform', 'translate3d(-' + width + 'px, 0px, 0px)');
+            nav.css('width', '0px');
             main.css('-webkit-transition', '0.15s');
-            main.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
+            // main.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
+            main.css('margin-left', '0px');
             state = new navClosedState();
         }
 
@@ -53,15 +55,18 @@
         }
 
         function navClosedState() {
+
             this.swiping = function(args) {
                 if(args.deltaX < 0) args.deltaX = 0;
                 if(args.deltaX > width) args.deltaX = width;
-                var navPos = -width + args.deltaX;
+                var navWidth =  args.deltaX;
                 var mainPos = 0 + args.deltaX;
+
                 nav.css('-webkit-transition', 'none');
-                nav.css('-webkit-transform', 'translate3d(' + navPos + 'px, 0px, 0px)');
+                nav.css('width', navWidth + 'px');
                 main.css('-webkit-transition', 'none');            
-                main.css('-webkit-transform', 'translate3d(' + mainPos + 'px, 0px, 0px)');
+                // main.css('-webkit-transform', 'translate3d(' + mainPos + 'px, 0px, 0px)');
+                main.css('margin-left', mainPos + 'px');
             }
 
             this.swiperight = function() {
@@ -77,30 +82,21 @@
             this.swiping = function(args) {
                 if(args.deltaX < -width) args.deltaX = -width;
                 if(args.deltaX > 0) args.deltaX = 0;
-                var navPos = 0 + args.deltaX;
+                var navWidth = width + args.deltaX;
                 var mainPos = width + args.deltaX;
-                
                 nav.css('-webkit-transition', 'none');
-                nav.css('-webkit-transform', 'translate3d(' + navPos + 'px, 0px, 0px)');
+                nav.css('width', navWidth + 'px');
                 main.css('-webkit-transition', 'none');
-                main.css('-webkit-transform', 'translate3d(' + mainPos + 'px, 0px, 0px)');
+                // main.css('-webkit-transform', 'translate3d(' + mainPos + 'px, 0px, 0px)');
+                main.css('margin-left', mainPos + 'px');
             }
 
             this.swiperight = function() {
-                nav.css('-webkit-transition', '0.15s');
-                nav.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
-                main.css('-webkit-transition', '0.15s');
-                main.css('-webkit-transform', 'translate3d(' + width + 'px, 0px, 0px)');
-                
-                state = new navOpenState();
+                me.open();
             }
 
             this.swipeleft = function() {
-                nav.css('-webkit-transition', '0.15s');
-                main.css('-webkit-transition', '0.15s');
-                nav.css('-webkit-transform', 'translate3d(-' + width + 'px, 0px, 0px)');
-                main.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
-                state = new navClosedState();
+                me.close();
             }
         }
     }

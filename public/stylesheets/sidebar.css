@@ -4,10 +4,10 @@
     color: #B9BFCF;
     overflow: hidden;
     height: 605px;
-    width: 255px;
+    width: 0px;
     position: absolute;
     box-sizing: border-box;
-    -webkit-transform: translate3d(-255px, 0px, 0px);
+    /*-webkit-transform: translate3d(-255px, 0px, 0px);*/
 }
 
 .nav-search .input-search {
@@ -47,6 +47,7 @@
     font-size: 18px;
     text-shadow: 0px 1px #000;
     box-sizing: border-box;
+    white-space: nowrap;
 }
 
 .nav-item:active {
