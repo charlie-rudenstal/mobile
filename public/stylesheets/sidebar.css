@@ -28,7 +28,9 @@
     height: 31px;
 
     padding: 0px 10px;
+    padding-top: 1px; /* text is not perfectly centered without this */
     vertical-align: middle;
+
     
     font-family: arial;
     font-size: 14px;
