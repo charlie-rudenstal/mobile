@@ -29,16 +29,16 @@
         }
 
         me.open = function() {
-            nav.css('-webkit-transition', '0.2s');
-            nav.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
+            // nav.css('-webkit-transition', '0.2s');
+            // nav.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
             main.css('-webkit-transition', '0.2s');
             main.css('-webkit-transform', 'translate3d(' + width + 'px, 0px, 0px)');
             state = new navOpenState();
         }
 
         me.close = function() {
-            nav.css('-webkit-transition', '0.2s');
-            nav.css('-webkit-transform', 'translate3d(-' + width + 'px, 0px, 0px)');
+            // nav.css('-webkit-transition', '0.2s');
+            // nav.css('-webkit-transform', 'translate3d(-' + width + 'px, 0px, 0px)');
             main.css('-webkit-transition', '0.2s');
             main.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
             state = new navClosedState();
@@ -58,8 +58,8 @@
                 if(args.deltaX > width) args.deltaX = width;
                 var navPos = -width + args.deltaX;
                 var mainPos = 0 + args.deltaX;
-                nav.css('-webkit-transition', 'none');
-                nav.css('-webkit-transform', 'translate3d(' + navPos + 'px, 0px, 0px)');
+                // nav.css('-webkit-transition', 'none');
+                // nav.css('-webkit-transform', 'translate3d(' + navPos + 'px, 0px, 0px)');
                 main.css('-webkit-transition', 'none');            
                 main.css('-webkit-transform', 'translate3d(' + mainPos + 'px, 0px, 0px)');
             }
@@ -80,8 +80,8 @@
                 var navPos = 0 + args.deltaX;
                 var mainPos = width + args.deltaX;
                 
-                nav.css('-webkit-transition', 'none');
-                nav.css('-webkit-transform', 'translate3d(' + navPos + 'px, 0px, 0px)');
+                // nav.css('-webkit-transition', 'none');
+                // nav.css('-webkit-transform', 'translate3d(' + navPos + 'px, 0px, 0px)');
                 main.css('-webkit-transition', 'none');
                 main.css('-webkit-transform', 'translate3d(' + mainPos + 'px, 0px, 0px)');
             }
@@ -96,9 +96,9 @@
             }
 
             this.swipeleft = function() {
-                nav.css('-webkit-transition', '0.15s');
+                // nav.css('-webkit-transition', '0.15s');
+                // nav.css('-webkit-transform', 'translate3d(-' + width + 'px, 0px, 0px)');
                 main.css('-webkit-transition', '0.15s');
-                nav.css('-webkit-transform', 'translate3d(-' + width + 'px, 0px, 0px)');
                 main.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
                 state = new navClosedState();
             }

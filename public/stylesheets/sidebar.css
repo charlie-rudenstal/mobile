@@ -7,7 +7,7 @@
     width: 255px;
     position: absolute;
     box-sizing: border-box;
-    -webkit-transform: translate3d(-255px, 0px, 0px);
+    /*-webkit-transform: translate3d(-255px, 0px, 0px);*/
 }
 
 .nav-search {
@@ -32,7 +32,6 @@
     font-family: arial;
     font-size: 14px;
     
-
     background-color: #474D5E;
     background: -webkit-gradient(linear, left top, left bottom,
                  color-stop(0%,#444A5C), 

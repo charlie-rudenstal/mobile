@@ -29,5 +29,7 @@ input {
 .contents {
 	padding: 15px 15px;
 	border-top: 1px solid #3C4153;
+	background-color: #eee;
+	height: 500px;
 }
 
