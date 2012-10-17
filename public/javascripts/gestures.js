@@ -59,7 +59,6 @@
 
 		function gestureState(startPoint) {
 			this.move = function(e, args) {
-				console.log("yeah");
 				var endPoint = {x: args.clientX, y: args.clientY };
 				var args = {};
 				args.deltaX = endPoint.x - startPoint.x;

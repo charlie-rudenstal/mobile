@@ -11,7 +11,8 @@
         var me = this;
 
         // Options
-        var nav = $(options.nav);
+        var navLeft = $(options.left);
+        var navRight = $(options.right);
         var main = $(options.main);
         var width = options.width || 255;
 
@@ -20,7 +21,7 @@
 
         // Using gestures to open/close menu
         var gestures = new CR.Gestures();
-        $(gestures).on('swipeleft swiperight swiping', handle);
+        $(gestures).on('swipeleft swiperight swiping', handle); // swiping
         
         function handle(e, args) {
             if(state.hasOwnProperty(e.type)) {
@@ -28,87 +29,101 @@
             }
         }
 
-        me.open = function() {
-            // nav.css('-webkit-transition', '0.2s');
-            // nav.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
+        me.open = function(side) {
             main.css('-webkit-transition', '0.2s');
-            main.css('-webkit-transform', 'translate3d(' + width + 'px, 0px, 0px)');
-            state = new navOpenState();
-        
-            // wait before making the sidebar selectable
+            
+            // Wait before making the sidebar selectable
             // otherwise a click on the menuicon might
             // select the search input box
-            setTimeout(function() {
-                nav.css('z-index', 0);
-            }, 600);
+            if(side == 'left') {
+                navLeft.css('display', 'block');
+                navRight.css('display', 'none');
+                navLeft.css('z-index', 0);
+                main.css('-webkit-transform', 'translate3d(' + width + 'px, 0px, 0px)');
+                state = new navOpenState('left');
+            } else {
+                navLeft.css('display', 'none');
+                navRight.css('display', 'block');
+                navRight.css('z-index', 0);
+                main.css('-webkit-transform', 'translate3d(' + -width + 'px, 0px, 0px)');
+                state = new navOpenState('right');
+            }
         }
 
         me.close = function() {
-            // nav.css('-webkit-transition', '0.2s');
-            // nav.css('-webkit-transform', 'translate3d(-' + width + 'px, 0px, 0px)');
-            nav.css('z-index', -1);
+            navLeft.css('z-index', -1);
+            navRight.css('z-index', -1);
             main.css('-webkit-transition', '0.2s');
             main.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
             state = new navClosedState();
         }
 
-        me.toggle = function() {
+        me.toggle = function(side) {
             if (state instanceof navOpenState) {
-                me.close();
+                me.close(side);
             } else {
-                me.open();
+                me.open(side);
             }
         }
 
         function navClosedState() {
             this.swiping = function(args) {
-                if(args.deltaX < 0) args.deltaX = 0;
-                if(args.deltaX > width) args.deltaX = width;
-                var navPos = -width + args.deltaX;
-                var mainPos = 0 + args.deltaX;
-                nav.css('z-index', 0);
-                main.css('-webkit-transition', 'none');            
+                if(args.deltaX > 0) {
+                    navLeft.css('z-index', 0);
+                    navLeft.css('display', 'block');
+                } else {
+                    navRight.css('z-index', 0);
+                    navRight.css('display', 'block');
+                }
+
+                var mainPos = args.deltaX;
+                main.css('-webkit-transition', 'none'); 
                 main.css('-webkit-transform', 'translate3d(' + mainPos + 'px, 0px, 0px)');
             }
 
             this.swiperight = function() {
-                me.open();
+                me.open('left');
+            }
+
+            this.swipeleft = function() {
+                me.open('right');
+            }
+        }
+
+        function navOpenState(side) {
+            this.swiping = function(args) {
+                // if(placement == 'left') {
+                //     if(args.deltaX < -width) args.deltaX = -width;
+                //     if(args.deltaX > 0) args.deltaX = 0;
+                //     var mainPos = width + args.deltaX;
+                // } else {
+                //     if(args.deltaX < 0) args.deltaX = 0;
+                //     if(args.deltaX > width) args.deltaX = width;    
+                //     var mainPos = -width + args.deltaX;
+                // }
+                
+                if(side == 'left') {  
+                    if(args.deltaX < -width) return;
+                    if(args.deltaX > 0) return;
+                    navLeft.css('z-index', -1);
+                    var mainPos = width + args.deltaX;         
+                } else {
+                    if(args.deltaX < 0) return;
+                    if(args.deltaX > width) return;  
+                    navRight.css('z-index', -1);
+                    var mainPos = -width + args.deltaX;
+                }
+                 
+                main.css('-webkit-transition', 'none');
+                main.css('-webkit-transform', 'translate3d(' + mainPos + 'px, 0px, 0px)');      
             }
 
             this.swipeleft = function() {
                 me.close();
             }
-        }
-
-        function navOpenState() {
-            this.swiping = function(args) {
-                if(args.deltaX < -width) args.deltaX = -width;
-                if(args.deltaX > 0) args.deltaX = 0;
-                var navPos = 0 + args.deltaX;
-                var mainPos = width + args.deltaX;
-                
-                // nav.css('-webkit-transition', 'none');
-                // nav.css('-webkit-transform', 'translate3d(' + navPos + 'px, 0px, 0px)');
-                nav.css('z-index', -1);
-                main.css('-webkit-transition', 'none');
-                main.css('-webkit-transform', 'translate3d(' + mainPos + 'px, 0px, 0px)');
-            }
 
             this.swiperight = function() {
-                nav.css('-webkit-transition', '0.15s');
-                nav.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
-                main.css('-webkit-transition', '0.15s');
-                main.css('-webkit-transform', 'translate3d(' + width + 'px, 0px, 0px)');
-                
-                state = new navOpenState();
-            }
-
-            this.swipeleft = function() {
-                // nav.css('-webkit-transition', '0.15s');
-                // nav.css('-webkit-transform', 'translate3d(-' + width + 'px, 0px, 0px)');
-                main.css('-webkit-transition', '0.15s');
-                main.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
-                state = new navClosedState();
+                me.close();
             }
         }
     }
