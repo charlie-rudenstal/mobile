@@ -6,8 +6,9 @@
 
 		var sidebar = new CR.Sidebar({ nav: '.nav', main: '.main' });
 
-        $("#btnSidebar").on('click', function() {
+        $("#btnSidebar").on('touchend click', function() {
             sidebar.toggle();
+            e.preventDefault();
         })
 
 	});

@@ -7,6 +7,7 @@
     width: 255px;
     position: absolute;
     box-sizing: border-box;
+    z-index: -1;
     /*-webkit-transform: translate3d(-255px, 0px, 0px);*/
 }
 
