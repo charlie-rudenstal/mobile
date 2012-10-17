@@ -8,6 +8,8 @@ html
 		//- <meta name='viewport' content='width=device-width, initial-scale = 1, user-scalable = no'>
 		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 		
+		link(rel='stylesheet', href='/stylesheets/nav.css')
+		link(rel='stylesheet', href='/stylesheets/head.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		
 		script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js')
@@ -25,7 +27,9 @@ html
 				li Nearby
 				li Messages
 
-		.main Innehåll
+		.main 
+			.head My App
+			.contents Innehåll
 
 	script
 		window.addEventListener('load', function() {

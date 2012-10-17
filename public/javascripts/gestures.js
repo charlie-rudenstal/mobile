@@ -39,6 +39,9 @@
 				case 'touchstart': generalEvent = 'down'; break;
 				case 'touchmove': generalEvent = 'move'; break;
 				case 'touchend': generalEvent = 'up'; break;
+				case 'mousedown': generalEvent = 'down'; break;
+				case 'mousemove': generalEvent = 'move'; break;
+				case 'mouseup': generalEvent = 'up'; break;
 			}
 
 			if(state.hasOwnProperty(generalEvent)) {
@@ -56,6 +59,7 @@
 
 		function gestureState(startPoint) {
 			this.move = function(e, args) {
+				console.log("yeah");
 				var endPoint = {x: args.clientX, y: args.clientY };
 				var args = {};
 				args.deltaX = endPoint.x - startPoint.x;
