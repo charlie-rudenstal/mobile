@@ -29,17 +29,17 @@
         }
 
         me.open = function() {
-            nav.css('-webkit-transition', '0.15s');
+            nav.css('-webkit-transition', '0.2s');
             nav.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
-            main.css('-webkit-transition', '0.15s');
+            main.css('-webkit-transition', '0.2s');
             main.css('-webkit-transform', 'translate3d(' + width + 'px, 0px, 0px)');
             state = new navOpenState();
         }
 
         me.close = function() {
-            nav.css('-webkit-transition', '0.15s');
+            nav.css('-webkit-transition', '0.2s');
             nav.css('-webkit-transform', 'translate3d(-' + width + 'px, 0px, 0px)');
-            main.css('-webkit-transition', '0.15s');
+            main.css('-webkit-transition', '0.2s');
             main.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
             state = new navClosedState();
         }
