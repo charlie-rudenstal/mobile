@@ -6,6 +6,10 @@
 
 		var sidebar = new CR.Sidebar({ nav: '.nav', main: '.main' });
 
+        $("#iconSidebar").on('click', function() {
+            sidebar.toggle();
+        })
+
 	});
 
 })(jQuery);
