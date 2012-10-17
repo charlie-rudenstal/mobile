@@ -82,6 +82,8 @@
 				args.distanceX = Math.abs(args.deltaX);
 				args.distanceY = Math.abs(args.deltaY);
 			
+				$(me).trigger('swipeend', args);
+
 				// No vertical moment
 				// And enough of horizontal moment, triggers swipeLeft and swipeRight 
 				if(args.distanceY < 30) {

@@ -6,7 +6,7 @@
 
 		var sidebar = new CR.Sidebar({ left: '.nav-left', right: '.nav-right', main: '.main' });
 
-        $("#btnSidebar").on('touchend mouseup', function() {
+        $("#btnSidebar").on('touchend mouseup', function(e) {
             sidebar.toggle('left');
             e.preventDefault();
         })
@@ -16,8 +16,7 @@
 })(jQuery);
 
 
-document.ontouchmove = function(e){ 
-	//if(e.changedTouches[0]; 
+document.ontouchmove = function(e) {
     e.preventDefault(); 
 }
 
