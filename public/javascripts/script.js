@@ -6,7 +6,7 @@
 
 		var sidebar = new CR.Sidebar({ nav: '.nav', main: '.main' });
 
-        $("#btnSidebar").on('touchend click', function() {
+        $("#btnSidebar").on('touchend mouseup', function() {
             sidebar.toggle();
             e.preventDefault();
         })
