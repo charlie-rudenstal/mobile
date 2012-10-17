@@ -1,0 +1,16 @@
+.icon {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.icon-sidebar {
+    display: inline;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid #262B3B;
+    border-radius: 4px;
+    background: -webkit-gradient(linear, left top, left bottom,
+                 color-stop(0%,#43495B), 
+                 color-stop(100%, #262B3B));
+}

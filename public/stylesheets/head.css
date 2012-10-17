@@ -16,21 +16,20 @@
     background: -webkit-gradient(linear, left top, left bottom,
                  color-stop(0%,#33394B), 
                  color-stop(100%, #161B2B));
-
-
 }
 
 .head ul {
-    height: 100%;
-}
-
-.head .head-item {
     height: 54px;
     display: table-cell;
     vertical-align: middle;
-    padding: 0px 8px;
 }
 
-.head li > * {
+.head .head-item {
+    padding: 0px 8px;
+    display: inline;
+}
 
+.head .head-title {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 14px;
 }
