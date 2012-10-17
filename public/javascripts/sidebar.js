@@ -34,11 +34,19 @@
             main.css('-webkit-transition', '0.2s');
             main.css('-webkit-transform', 'translate3d(' + width + 'px, 0px, 0px)');
             state = new navOpenState();
+        
+            // wait before making the sidebar selectable
+            // otherwise a click on the menuicon might
+            // select the search input box
+            setTimeout(function() {
+                nav.css('z-index', 0);
+            }, 600);
         }
 
         me.close = function() {
             // nav.css('-webkit-transition', '0.2s');
             // nav.css('-webkit-transform', 'translate3d(-' + width + 'px, 0px, 0px)');
+            nav.css('z-index', -1);
             main.css('-webkit-transition', '0.2s');
             main.css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
             state = new navClosedState();
@@ -58,8 +66,7 @@
                 if(args.deltaX > width) args.deltaX = width;
                 var navPos = -width + args.deltaX;
                 var mainPos = 0 + args.deltaX;
-                // nav.css('-webkit-transition', 'none');
-                // nav.css('-webkit-transform', 'translate3d(' + navPos + 'px, 0px, 0px)');
+                nav.css('z-index', 0);
                 main.css('-webkit-transition', 'none');            
                 main.css('-webkit-transform', 'translate3d(' + mainPos + 'px, 0px, 0px)');
             }
@@ -82,6 +89,7 @@
                 
                 // nav.css('-webkit-transition', 'none');
                 // nav.css('-webkit-transform', 'translate3d(' + navPos + 'px, 0px, 0px)');
+                nav.css('z-index', -1);
                 main.css('-webkit-transition', 'none');
                 main.css('-webkit-transform', 'translate3d(' + mainPos + 'px, 0px, 0px)');
             }
