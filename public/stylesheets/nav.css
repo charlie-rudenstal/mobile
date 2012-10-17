@@ -36,6 +36,7 @@
 
 .nav li {
     border-top: 1px solid #3C4153;
+    border-bottom: 1px solid #272D3A;
     padding: 10px 14px;
     font-size: 18px;
     padding-bottom: 10px;

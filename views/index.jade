@@ -8,6 +8,7 @@ html
 		//- <meta name='viewport' content='width=device-width, initial-scale = 1, user-scalable = no'>
 		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 		
+		link(rel='stylesheet', href='/stylesheets/reset.css')
 		link(rel='stylesheet', href='/stylesheets/nav.css')
 		link(rel='stylesheet', href='/stylesheets/head.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
@@ -21,14 +22,19 @@ html
 	body
 		.nav
 			ul
-				li 
+				li
 					input(placeholder='Search', type='text', class='search')
 				li News feed
 				li Nearby
 				li Messages
 
 		.main 
-			.head My App
+			.head
+				ul
+					li.head-item
+						i.icon.icon-sidebar Menu
+					li 
+
 			.contents Innehåll
 
 	script

@@ -1,10 +1,36 @@
 .head {
     font-weight: normal;
-    padding: 15px 15px;
     color: white;
     width: 100%;
     display: block;
+    border-bottom: 1px solid #272D3A;
+
+    box-sizing: border-box;
+
+    height: 54px;
+
     background: -webkit-gradient(linear, left top, left bottom,
                  color-stop(0%,#43495B), 
                  color-stop(100%, #262B3B));
+
+    background: -webkit-gradient(linear, left top, left bottom,
+                 color-stop(0%,#33394B), 
+                 color-stop(100%, #161B2B));
+
+
+}
+
+.head ul {
+    height: 100%;
+}
+
+.head .head-item {
+    height: 54px;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0px 8px;
+}
+
+.head li > * {
+
 }
