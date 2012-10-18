@@ -27,9 +27,63 @@ input {
 }
 
 .contents {
-	padding: 15px 15px;
 	border-top: 1px solid #3C4153;
 	background-color: #eee;
 	height: 532px;
 }
 
+.channel {
+	padding: 10px 10px;
+	border-top: 1px solid #f9f9f9;
+	border-bottom: 1px solid #ddd;
+}
+
+.channel h2 {
+	float: left;
+	margin-top: 0px;
+	margin-right: 15px;
+	background-color: white;
+	border-radius: 8px;
+
+	box-sizing: border-box;
+}
+
+.channel .logo {
+	width: 35px;
+	height: 35px;
+	padding-left: 4px;
+	padding-top: 5px;
+	padding-right: 4px;
+	padding-bottom: 1px;
+
+}
+
+.program {
+	padding: 3px 0px;
+}
+
+.program-current {
+	font-weight: bold;
+}
+
+.program-next {
+
+}
+
+.program .time {
+	float: left;
+	margin-right: 10px;
+}
+
+.program .title {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 14px;
+}
+
+.head .head-title {
+	position: absolute;
+	left: 50%;
+	margin-left: -33px;
+	margin-top: -1px;
+	font-size: 18px;
+}}

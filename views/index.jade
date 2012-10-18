@@ -3,9 +3,7 @@ html
 	head
 		title= title
 		<meta name='apple-mobile-web-app-capable' content='yes' />
-		
 		<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'>
-		//- <meta name='viewport' content='width=device-width, initial-scale = 1, user-scalable = no'>
 		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 		
 		link(rel='stylesheet', href='/stylesheets/reset.css')
@@ -19,13 +17,12 @@ html
 		script(src='/javascripts/sidebar.js')
 		script(src='/javascripts/gestures.js')
 		script(src='/javascripts/script.js')
-		script(src='/javascripts/live.js')
+		//- script(src='/javascripts/live.js')
 	
 	body
 		.nav.nav-left
 			ul
-				li.nav-search
-					input(placeholder='Sök program, kanal, skådis', type='text', class='input-search')
+				li.nav-search: input(placeholder='Sök program, kanal, skådis', type='text', class='input-search')
 				li.nav-header
 				li.nav-item Logga in
 				li.nav-header
@@ -37,8 +34,7 @@ html
 
 		.nav.nav-right
 			ul
-				li.nav-search
-					input(placeholder='Sök program, kanal, skådis', type='text', class='input-search')
+				li.nav-search: input(placeholder='Sök program, kanal, skådis', type='text', class='input-search')
 				li.nav-header Dagar
 				li.nav-item Igår
 				li.nav-item.active Idag
@@ -48,11 +44,22 @@ html
 		.main 
 			.head
 				ul
-					li.head-item
-						i#btnSidebar.btn Meny
-					li.head-item.head-title My App
+					li.head-item: i#btnSidebar.btn Meny
+					li.head-item.head-title Tablå
 
-			.contents Innehåll
+			.contents
+				for channel in channels
+					.channel
+						//- h2= channel.name
+						h2: img.logo(src='http://static01.tv.nu/_new_logos/ldpi/#{channel.systemName}.gif')
+						if channel.programs.length > 0
+							.program.program-current 
+								.time= channel.programs[0].startTime
+								.title= channel.programs[0].title	
+						if channel.programs.length > 1
+							.program.program-next 
+								.time= channel.programs[1].startTime
+								.title= channel.programs[1].title	
 
 	script
 		window.addEventListener('load', function() {
