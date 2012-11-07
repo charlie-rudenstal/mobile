@@ -12,7 +12,8 @@ exports.index = function(req, res){
 		res.setHeader('Cache-Control', 'public, max-age=' + (60 * 5));
 	}
 
-	var tableau = request('http://api.tv.nu/v2/numprograms/3', function(error, response, body) {
+	// TOOD: Create a configuration parameter excluded from git 
+	var tableau = request('http://api.example.org', function(error, response, body) {
 
 		var channels = [];
 		try {
